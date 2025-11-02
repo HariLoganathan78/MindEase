@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MindEase | Self Assessment</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: linear-gradient(rgba(0, 120, 255, 0.1), rgba(0, 120, 255, 0.2)), #f4f8fb;
+      color: #333;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: #0078ff;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo {
+      font-size: 22px;
+      font-weight: 700;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links li {
+      margin-left: 20px;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+    }
+    .nav-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* Header */
+    .header {
+      background: linear-gradient(rgba(0,120,255,0.4), rgba(0,120,255,0.6)),
+        url('https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 70px 20px;
+    }
+    .header h1 {
+      font-size: 42px;
+      margin-bottom: 10px;
+    }
+    .header p {
+      font-size: 18px;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    /* Assessment Form */
+    .assessment {
+      padding: 50px 20px;
+      text-align: center;
+    }
+    .assessment h2 {
+      color: #0078ff;
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+    form {
+      max-width: 700px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+    label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 10px;
+      color: #333;
+    }
+    .question {
+      margin-bottom: 25px;
+    }
+    select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+    }
+    button {
+      background: #0078ff;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 16px;
+    }
+    button:hover {
+      background: #005fcc;
+    }
+
+    /* Result */
+    .result-box {
+      margin-top: 40px;
+      background: #e9f4ff;
+      border-left: 6px solid #0078ff;
+      padding: 20px;
+      border-radius: 10px;
+      display: none;
+    }
+    .result-box h3 {
+      color: #003c80;
+      margin-bottom: 10px;
+    }
+
+    /* Footer */
+    footer {
+      background: #003c80;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+      margin-top: 40px;
+    }
+
+    /* Responsive */
+    @media(max-width:768px){
+      .header h1 { font-size: 32px; }
+      form { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">MindEase</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="selfhelp.html">Self-Help</a></li>
+      <li><a href="assessment.html">Assessment</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="report.html">Report</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="emotiondetect.html">Emotion Detection</a></li>
+    </ul>
+  </nav>
+
+  <!-- Header -->
+  <section class="header">
+    <h1>Self Assessment Test</h1>
+    <p>Answer a few questions to understand your current emotional and mental state.</p>
+  </section>
+
+  <!-- Assessment Form -->
+  <section class="assessment">
+    <h2><i class="fa-solid fa-clipboard-check"></i> Quick Mental Health Check</h2>
+    <form id="assessmentForm">
+      <div class="question">
+        <label>1. How often do you feel stressed or overwhelmed?</label>
+        <select id="q1" required>
+          <option value="">Select</option>
+          <option value="1">Rarely</option>
+          <option value="2">Sometimes</option>
+          <option value="3">Often</option>
+          <option value="4">Almost Always</option>
+        </select>
+      </div>
+
+      <div class="question">
+        <label>2. How well do you sleep at night?</label>
+        <select id="q2" required>
+          <option value="">Select</option>
+          <option value="4">Very Well</option>
+          <option value="3">Okay</option>
+          <option value="2">Poorly</option>
+          <option value="1">Very Poorly</option>
+        </select>
+      </div>
+
+      <div class="question">
+        <label>3. How frequently do you engage in relaxing activities (e.g., music, walking)?</label>
+        <select id="q3" required>
+          <option value="">Select</option>
+          <option value="4">Very Often</option>
+          <option value="3">Sometimes</option>
+          <option value="2">Rarely</option>
+          <option value="1">Never</option>
+        </select>
+      </div>
+
+      <div class="question">
+        <label>4. How would you describe your mood most days?</label>
+        <select id="q4" required>
+          <option value="">Select</option>
+          <option value="4">Happy & Calm</option>
+          <option value="3">Neutral</option>
+          <option value="2">Anxious or Sad</option>
+          <option value="1">Very Depressed</option>
+        </select>
+      </div>
+
+      <div class="question">
+        <label>5. How focused do you feel during studies or work?</label>
+        <select id="q5" required>
+          <option value="">Select</option>
+          <option value="4">Highly Focused</option>
+          <option value="3">Moderately Focused</option>
+          <option value="2">Easily Distracted</option>
+          <option value="1">Can't Focus</option>
+        </select>
+      </div>
+
+      <button type="button" onclick="calculateResult()">Submit</button>
+    </form>
+
+    <div class="result-box" id="resultBox">
+      <h3>Your Result:</h3>
+      <p id="resultText"></p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 MindEase | Student Mental Health Portal | All Rights Reserved</p>
+  </footer>
+
+  <!-- Chatbot -->
+  <script src="https://cdn.botpress.cloud/webchat/v3.3/inject.js"></script>
+  <script src="https://files.bpcontent.cloud/2025/10/13/05/20251013053713-P1K771RH.js" defer></script>
+  <script>
+    window.botpressWebChat?.init({
+      botName: 'Student Assistant',
+      bubbleBackground: '#0078ff',
+      showConversationsButton: true,
+      showCloseButton: true
+    });
+  </script>
+
+  <!-- Inline JS -->
+  <script>
+    function calculateResult() {
+      let total = 0;
+      for (let i = 1; i <= 5; i++) {
+        const val = parseInt(document.getElementById('q' + i).value);
+        if (!val) {
+          alert("⚠️ Please answer all questions before submitting.");
+          return;
+        }
+        total += val;
+      }
+
+      const avg = total / 5;
+      let message = "";
+
+      if (avg >= 3.5) {
+        message = "😊 You seem to be doing well emotionally! Keep maintaining your healthy habits and balance.";
+      } else if (avg >= 2.5) {
+        message = "🙂 You’re doing okay, but occasional stress might affect you. Try using relaxation and journaling tools regularly.";
+      } else if (avg >= 1.5) {
+        message = "😟 You may be experiencing moderate stress or mood issues. Consider talking to a counselor or using self-help resources.";
+      } else {
+        message = "😔 Your responses suggest high distress. Please reach out to a mental health professional or helpline immediately.";
+      }
+
+      document.getElementById('resultText').textContent = message;
+      document.getElementById('resultBox').style.display = "block";
+
+      // Save result to localStorage for report page
+      const assessmentData = {
+        date: new Date().toLocaleString(),
+        score: avg,
+        result: message
+      };
+      localStorage.setItem('lastAssessment', JSON.stringify(assessmentData));
+    }
+  </script>
+</body>
+</html>

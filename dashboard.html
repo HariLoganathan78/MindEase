@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MindEase | Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: linear-gradient(to bottom right, #e0f0ff, #ffffff);
+      color: #333;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: #0078ff;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+    }
+    .logo {
+      font-size: 22px;
+      font-weight: 700;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links li {
+      margin-left: 20px;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+    }
+    .nav-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      background: linear-gradient(rgba(0,120,255,0.4), rgba(0,120,255,0.5)), 
+        url('https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+      color: white;
+      padding: 70px 20px;
+    }
+    .header h1 {
+      font-size: 42px;
+      margin-bottom: 10px;
+    }
+    .header p {
+      font-size: 18px;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    /* Dashboard Cards */
+    .dashboard {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      padding: 50px;
+    }
+    .card {
+      background: white;
+      border-radius: 14px;
+      padding: 25px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      text-align: left;
+      transition: transform 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card h3 {
+      color: #0078ff;
+      margin-bottom: 15px;
+    }
+    .card p {
+      line-height: 1.6;
+    }
+
+    /* Progress Bar */
+    .progress-bar {
+      background: #e0e0e0;
+      border-radius: 8px;
+      height: 15px;
+      margin-top: 8px;
+    }
+    .progress {
+      height: 100%;
+      background: #0078ff;
+      border-radius: 8px;
+      width: 0%;
+      transition: width 1s ease;
+    }
+
+    /* Goals */
+    .goals input {
+      width: 100%;
+      padding: 8px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+    }
+    .goals button {
+      background: #0078ff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .goals button:hover {
+      background: #005fcc;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    li {
+      margin-bottom: 5px;
+    }
+
+    footer {
+      background: #003c80;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">MindEase</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="selfhelp.html">Self-Help</a></li>
+      <li><a href="assessment.html">Assessment</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="report.html">Report</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="emotiondetect.html">Emotion Detection</a></li>
+    </ul>
+  </nav>
+
+  <!-- Header -->
+  <section class="header">
+    <h1>Student Dashboard</h1>
+    <p>Track your emotional well-being, goals, and latest assessment results here.</p>
+  </section>
+
+  <!-- Dashboard Cards -->
+  <section class="dashboard">
+    
+    <!-- Assessment Summary -->
+    <div class="card" id="assessmentCard">
+      <h3><i class="fa-solid fa-chart-line"></i> Latest Assessment</h3>
+      <p id="assessmentSummary">Loading your latest result...</p>
+      <div class="progress-bar">
+        <div class="progress" id="progressBar"></div>
+      </div>
+    </div>
+
+    <!-- Personal Goals -->
+    <div class="card goals">
+      <h3><i class="fa-solid fa-bullseye"></i> Personal Goals</h3>
+      <input type="text" id="goalInput" placeholder="Enter a new goal...">
+      <button onclick="addGoal()">Add Goal</button>
+      <ul id="goalList"></ul>
+    </div>
+
+    <!-- Quick Tips -->
+    <div class="card">
+      <h3><i class="fa-solid fa-lightbulb"></i> Daily Wellness Tips</h3>
+      <p id="tipText">Loading...</p>
+      <button onclick="generateTip()">Show Another Tip</button>
+    </div>
+
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 MindEase | Student Mental Health Portal | All Rights Reserved</p>
+  </footer>
+
+  <!-- Chatbot -->
+  <script src="https://cdn.botpress.cloud/webchat/v3.3/inject.js"></script>
+  <script src="https://files.bpcontent.cloud/2025/10/13/05/20251013053713-P1K771RH.js" defer></script>
+  <script>
+    window.botpressWebChat?.init({
+      botName: 'Student Assistant',
+      bubbleBackground: '#0078ff',
+      showConversationsButton: true,
+      showCloseButton: true
+    });
+  </script>
+
+  <!-- Inline JS -->
+  <script>
+    // Load assessment summary
+    window.onload = function() {
+      const data = JSON.parse(localStorage.getItem('lastAssessment'));
+      const summary = document.getElementById('assessmentSummary');
+      const bar = document.getElementById('progressBar');
+
+      if (data) {
+        summary.innerHTML = `
+          <strong>Date:</strong> ${data.date}<br>
+          <strong>Score:</strong> ${data.score.toFixed(1)} / 4<br>
+          <strong>Result:</strong> ${data.result}
+        `;
+        bar.style.width = (data.score / 4 * 100) + '%';
+      } else {
+        summary.innerHTML = "No assessment record found. Please take the self-assessment first.";
+      }
+
+      generateTip();
+      loadGoals();
+    };
+
+    // Generate random wellness tip
+    const tips = [
+      "Take a 5-minute breathing break to calm your mind.",
+      "Write down one thing you’re grateful for today.",
+      "Go for a short walk — it helps reset your focus.",
+      "Drink a glass of water and stretch for 2 minutes.",
+      "Avoid screens for 15 minutes and just relax."
+    ];
+
+    function generateTip() {
+      const tipText = document.getElementById('tipText');
+      tipText.textContent = tips[Math.floor(Math.random() * tips.length)];
+    }
+
+    // Goal management
+    function addGoal() {
+      const input = document.getElementById('goalInput');
+      const goal = input.value.trim();
+      if (goal === "") return alert("Please enter a goal first.");
+      
+      const goals = JSON.parse(localStorage.getItem('goals') || "[]");
+      goals.push(goal);
+      localStorage.setItem('goals', JSON.stringify(goals));
+      input.value = "";
+      loadGoals();
+    }
+
+    function loadGoals() {
+      const goals = JSON.parse(localStorage.getItem('goals') || "[]");
+      const list = document.getElementById('goalList');
+      list.innerHTML = "";
+      goals.forEach((goal, index) => {
+        const li = document.createElement('li');
+        li.textContent = goal;
+        li.onclick = () => {
+          if (confirm("Mark this goal as completed?")) {
+            goals.splice(index, 1);
+            localStorage.setItem('goals', JSON.stringify(goals));
+            loadGoals();
+          }
+        };
+        list.appendChild(li);
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MindEase | Report</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: linear-gradient(to right, #e8f1ff, #ffffff);
+      color: #333;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: #0078ff;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+    }
+    .logo {
+      font-size: 22px;
+      font-weight: 700;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links li {
+      margin-left: 20px;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+    }
+    .nav-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      background: linear-gradient(rgba(0,120,255,0.4), rgba(0,120,255,0.5)), 
+        url('https://images.unsplash.com/photo-1584697964193-4b5a903a9b6e?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+      color: white;
+      padding: 70px 20px;
+    }
+    .header h1 {
+      font-size: 42px;
+      margin-bottom: 10px;
+    }
+
+    /* Report Container */
+    .report-container {
+      background: white;
+      border-radius: 12px;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 30px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+
+    .report-container h2 {
+      color: #0078ff;
+      margin-bottom: 15px;
+    }
+
+    .report-container table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+      text-align: center;
+    }
+
+    th {
+      background: #0078ff;
+      color: white;
+    }
+
+    .no-data {
+      text-align: center;
+      color: #999;
+      margin-top: 20px;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      background: #0078ff;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+      border: none;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .btn:hover {
+      background: #005fcc;
+    }
+
+    footer {
+      background: #003c80;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 768px) {
+      .report-container {
+        margin: 20px;
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">MindEase</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="selfhelp.html">Self-Help</a></li>
+      <li><a href="assessment.html">Assessment</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="report.html">Report</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="emotiondetect.html">Emotion Detection</a></li>
+    </ul>
+  </nav>
+
+  <!-- Header -->
+  <section class="header">
+    <h1>Student Report</h1>
+    <p>Review your progress and assessment history</p>
+  </section>
+
+  <!-- Report Container -->
+  <section class="report-container">
+    <h2><i class="fa-solid fa-clipboard-list"></i> Latest Assessment Summary</h2>
+    <div id="latestReport">Loading...</div>
+
+    <h2 style="margin-top:40px;"><i class="fa-solid fa-clock-rotate-left"></i> Assessment History</h2>
+    <table id="historyTable">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Score</th>
+          <th>Result</th>
+        </tr>
+      </thead>
+      <tbody id="historyBody">
+        <tr><td colspan="3" class="no-data">No data found</td></tr>
+      </tbody>
+    </table>
+
+    <button class="btn" onclick="window.print()">🖨️ Print / Download Report</button>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 MindEase | Student Mental Health Portal | All Rights Reserved</p>
+  </footer>
+
+  <!-- Chatbot Integration -->
+  <script src="https://cdn.botpress.cloud/webchat/v3.3/inject.js"></script>
+  <script src="https://files.bpcontent.cloud/2025/10/13/05/20251013053713-P1K771RH.js" defer></script>
+  <script>
+    window.botpressWebChat?.init({
+      botName: 'Student Assistant',
+      bubbleBackground: '#0078ff',
+      showConversationsButton: true,
+      showCloseButton: true
+    });
+  </script>
+
+  <!-- Inline JS -->
+  <script>
+    window.onload = function() {
+      const last = JSON.parse(localStorage.getItem('lastAssessment'));
+      const history = JSON.parse(localStorage.getItem('assessmentHistory') || '[]');
+
+      // Latest report
+      const latestDiv = document.getElementById('latestReport');
+      if (last) {
+        latestDiv.innerHTML = `
+          <p><strong>Date:</strong> ${last.date}</p>
+          <p><strong>Score:</strong> ${last.score.toFixed(1)} / 4</p>
+          <p><strong>Result:</strong> ${last.result}</p>
+        `;
+      } else {
+        latestDiv.innerHTML = `<p class="no-data">No latest assessment available. Please take one.</p>`;
+      }
+
+      // History table
+      const tbody = document.getElementById('historyBody');
+      tbody.innerHTML = '';
+      if (history.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="3" class="no-data">No assessment history found</td></tr>`;
+      } else {
+        history.forEach(h => {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td>${h.date}</td>
+            <td>${h.score.toFixed(1)}</td>
+            <td>${h.result}</td>
+          `;
+          tbody.appendChild(tr);
+        });
+      }
+    };
+  </script>
+</body>
+</html>

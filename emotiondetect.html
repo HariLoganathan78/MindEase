@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emotion Detection - MindEase</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f') no-repeat center center/cover;
+      color: #fff;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    nav {
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+    }
+
+    nav h1 {
+      font-size: 26px;
+      color: #00bfff;
+      margin: 0;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      margin-left: 25px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-size: 16px;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #00bfff;
+    }
+
+    .content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(5px);
+      padding: 40px;
+    }
+
+    h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 18px;
+      width: 70%;
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+
+    button {
+      padding: 14px 28px;
+      font-size: 18px;
+      background-color: #00bfff;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #0099cc;
+    }
+
+    footer {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 12px;
+      text-align: center;
+      font-size: 14px;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <h1>MindEase</h1>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="selfhelp.html">Self-Help</a></li>
+      <li><a href="assessment.html">Assessment</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="report.html">Report</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="emotiondetect.html">Emotion Detection</a></li>
+    </ul>
+  </nav>
+
+  <div class="content">
+    <h2>Real-Time Emotion Detection</h2>
+    <p>
+      This tool uses advanced AI (DeepFace) and your webcam to analyze facial expressions 
+      in real-time, detecting emotions like happiness, sadness, anger, and surprise.
+      Click below to launch the detector in your Command Prompt.
+    </p>
+
+    <button onclick="runPythonScript()">Start Emotion Detection</button>
+
+    <script>
+      function runPythonScript() {
+        alert("Starting Emotion Detection...\nPlease check the Command Prompt window!");
+        window.open('run_emotion.bat'); 
+      }
+    </script>
+  </div>
+
+  <footer>
+    © 2025 MindEase | Student Mental Health Resource Portal
+  </footer>
+
+  <!-- Chatbot Integration -->
+  <script src="https://cdn.botpress.cloud/webchat/v3.3/inject.js"></script>
+  <script src="https://files.bpcontent.cloud/2025/10/13/05/20251013053713-P1K771RH.js" defer></script>
+  <script>
+    window.botpressWebChat?.init({
+      botName: 'Student Assistant',
+      bubbleBackground: '#0078ff',
+      showConversationsButton: true,
+      showCloseButton: true
+    });
+  </script>
+</body>
+</html>
