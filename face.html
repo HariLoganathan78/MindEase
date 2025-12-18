@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script defer src="face-api.min.js"></script>
+  <script defer src="script.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    canvas {
+      position: absolute;
+    }
+    /* Back Button */
+    .back-btn {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      padding: 10px 18px;
+      background: rgba(22, 61, 237, 0.5);
+      color: white;
+      border: 2px solid white;
+      border-radius: 6px;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 16px;
+      cursor: pointer;
+      z-index: 9999;
+      transition: 0.3s;
+    }
+
+    .back-btn:hover {
+      background: rgba(35, 51, 231, 0.723);
+      color: #15076b;
+    }
+  </style>
+</head>
+<body>
+   <a href="index.html" class="back-btn">← Back</a>
+  <video id="video" width="720" height="560" autoplay muted></video>
+</body>
+</html>

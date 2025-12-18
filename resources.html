@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MindEase | Mental Health Resources</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    /* ===== General ===== */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: #f4f8fb;
+      color: #333;
+    }
+
+    /* ===== Navbar ===== */
+    .navbar {
+      background: #0078ff;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo {
+      font-size: 22px;
+      font-weight: 700;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links li {
+      margin-left: 20px;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+    }
+    .nav-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* ===== Header Banner ===== */
+    .banner {
+      background: linear-gradient(rgba(0,120,255,0.4), rgba(0,120,255,0.6)), 
+        url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 80px 20px;
+    }
+    .banner h1 {
+      font-size: 42px;
+      margin-bottom: 10px;
+    }
+    .banner p {
+      font-size: 18px;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    /* ===== Resources Section ===== */
+    .resources {
+      padding: 50px 30px;
+      text-align: center;
+    }
+    .resources h2 {
+      color: #0078ff;
+      font-size: 30px;
+      margin-bottom: 20px;
+    }
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      width: 280px;
+      padding: 25px;
+      text-align: left;
+      transition: 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+    }
+    .card i {
+      font-size: 35px;
+      color: #0078ff;
+      margin-bottom: 10px;
+    }
+    .card h3 {
+      margin: 10px 0;
+      color: #003c80;
+    }
+    .card p {
+      font-size: 14px;
+      color: #555;
+    }
+    .card a {
+      display: inline-block;
+      margin-top: 10px;
+      color: #0078ff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .card a:hover {
+      text-decoration: underline;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      background: #003c80;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 768px) {
+      .banner h1 {
+        font-size: 30px;
+      }
+      .card-container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 🌐 Navbar -->
+  <nav class="navbar">
+    <div class="logo">MindEase</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="selfhelp.html">Self-Help</a></li>
+      <li><a href="assessment.html">Assessment</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="report.html">Report</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="emotiondetect.html">Emotion Detection</a></li>
+    </ul>
+  </nav>
+
+  <!-- 📘 Banner -->
+  <section class="banner">
+    <h1>Student Mental Health Resources</h1>
+    <p>Find trusted materials, helplines, and self-improvement tools curated specially for students.</p>
+  </section>
+
+  <!-- 📚 Articles & Guides -->
+  <section class="resources">
+    <h2><i class="fa-solid fa-book-open"></i> Articles & Guides</h2>
+    <div class="card-container">
+      <div class="card">
+        <i class="fa-solid fa-brain"></i>
+        <h3>Understanding Anxiety</h3>
+        <p>Learn the causes, symptoms, and effective coping strategies for anxiety.</p>
+        <a href="https://www.who.int/news-room/fact-sheets/detail/mental-disorders" target="_blank">Read More</a>
+      </div>
+      <div class="card">
+        <i class="fa-solid fa-mug-hot"></i>
+        <h3>Managing Academic Stress</h3>
+        <p>Tips for handling workload, exams, and balancing life as a student.</p>
+        <a href="https://www.apa.org/topics/stress/stress-students" target="_blank">Read More</a>
+      </div>
+      <div class="card">
+        <i class="fa-solid fa-moon"></i>
+        <h3>Sleep & Mental Health</h3>
+        <p>Explore the powerful connection between quality sleep and emotional well-being.</p>
+        <a href="https://www.sleepfoundation.org/mental-health" target="_blank">Read More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ☎️ Helplines -->
+  <section class="resources">
+    <h2><i class="fa-solid fa-phone-volume"></i> Helplines & Support</h2>
+    <div class="card-container">
+      <div class="card">
+        <i class="fa-solid fa-headset"></i>
+        <h3>National Mental Health Helpline (India)</h3>
+        <p>24x7 Toll-Free: <b>1800-599-0019</b></p>
+        <a href="https://www.nimhans.ac.in/" target="_blank">Visit NIMHANS</a>
+      </div>
+      <div class="card">
+        <i class="fa-solid fa-hands-holding-heart"></i>
+        <h3>Snehi Helpline</h3>
+        <p>Confidential emotional support for anyone in distress.</p>
+        <a href="https://snehi.org/" target="_blank">Visit Snehi</a>
+      </div>
+      <div class="card">
+        <i class="fa-solid fa-life-ring"></i>
+        <h3>AASRA Helpline</h3>
+        <p>Dedicated to suicide prevention and mental wellness: <b>91-9820466726</b></p>
+        <a href="http://www.aasra.info/" target="_blank">Visit AASRA</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🎥 Videos -->
+  <section class="resources">
+    <h2><i class="fa-solid fa-video"></i> Mental Health Videos</h2>
+    <div class="card-container">
+      <div class="card">
+        <i class="fa-solid fa-play-circle"></i>
+        <h3>Mindfulness for Students</h3>
+        <p>Learn quick mindfulness exercises to relax during study breaks.</p>
+        <a href="https://www.youtube.com/watch?v=w6T02g5hnT4" target="_blank">Watch</a>
+      </div>
+      <div class="card">
+        <i class="fa-solid fa-heart"></i>
+        <h3>Overcoming Negative Thoughts</h3>
+        <p>Simple CBT-based techniques to improve your mindset.</p>
+        <a href="https://www.youtube.com/watch?v=1vx8iUvfyCY" target="_blank">Watch</a>
+      </div>
+      <div class="card">
+        <i class="fa-solid fa-brain"></i>
+        <h3>Understanding Depression</h3>
+        <p>What depression really feels like and how to seek help safely.</p>
+        <a href="https://www.youtube.com/watch?v=Z-5BI5gER3Y" target="_blank">Watch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🏫 Campus Support -->
+  <section class="resources">
+    <h2><i class="fa-solid fa-graduation-cap"></i> Campus Support</h2>
+    <div class="card-container">
+      <div class="card">
+        <i class="fa-solid fa-user-graduate"></i>
+        <h3>Student Counselor</h3>
+        <p>Reach out to your college counselor for personalized mental health support.</p>
+        <a href="contact.html">Book an Appointment</a>
+      </div>
+      <div class="card">
+        <i class="fa-solid fa-users"></i>
+        <h3>Peer Support Groups</h3>
+        <p>Join groups to share experiences, find friends, and talk openly.</p>
+        <a href="#">Join Group</a>
+      </div>
+      <div class="card">
+        <i class="fa-solid fa-calendar"></i>
+        <h3>Workshops & Events</h3>
+        <p>Participate in upcoming mental health awareness programs.</p>
+        <a href="#">View Schedule</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 📞 Footer -->
+  <footer>
+    <p>© 2025 MindEase | Student Mental Health Portal | All Rights Reserved</p>
+  </footer>
+
+  <!-- 🤖 Chatbot -->
+  <script src="https://cdn.botpress.cloud/webchat/v3.3/inject.js"></script>
+  <script src="https://files.bpcontent.cloud/2025/10/13/05/20251013053713-P1K771RH.js" defer></script>
+  <script>
+    window.botpressWebChat?.init({
+      botName: 'Student Assistant',
+      bubbleBackground: '#0078ff',
+      showConversationsButton: true,
+      showCloseButton: true
+    });
+  </script>
+</body>
+</html>

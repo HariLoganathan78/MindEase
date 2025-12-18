@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MindEase | Report</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: linear-gradient(to right, #e8f1ff, #ffffff);
+      color: #333;
+    } 
+
+    /* Navbar */
+    .navbar {
+      background: #0078ff;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+    }
+    .logo {
+      font-size: 22px;
+      font-weight: 700;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links li {
+      margin-left: 20px;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      background: linear-gradient(rgba(0,120,255,0.4), rgba(0,120,255,0.5)), 
+        url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+      color: white;
+      padding: 70px 20px;
+    }
+    .header h1 {
+      font-size: 42px;
+      margin-bottom: 10px;
+    }
+
+    /* Report Container */
+    .report-container {
+      background: white;
+      border-radius: 12px;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 30px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+
+    .report-container h2 {
+      color: #0078ff;
+      margin-bottom: 15px;
+    }
+
+    /* Tips Section */
+    .tips-box {
+      margin-top: 30px;
+      padding: 20px;
+      background: #f3f8ff;
+      border-left: 6px solid #0078ff;
+      border-radius: 10px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #0078ff;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+      border: none;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .btn:hover {
+      background: #005fcc;
+    }
+
+    footer {
+      background: #003c80;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+      margin-top: 40px;
+    }
+
+    @media print {
+      .navbar, footer, .btn { display: none; }
+      body { background: white; color: #333; }
+      .report-container { box-shadow: none; }
+      .tips-box { page-break-inside: avoid; }
+      ul { padding-left: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">MindEase</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="selfhelp.html">Self-Help</a></li>
+      <li><a href="assessment.html">Assessment</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="report.html">Report</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="emotiondetect.html">Emotion Detection</a></li>
+    </ul>
+  </nav>
+
+  <!-- Header -->
+  <section class="header">
+    <h1>Student Report</h1>
+    <p>Your latest mental wellness assessment summary</p>
+  </section>
+
+  <!-- Report Container -->
+  <section class="report-container">
+    <h2><i class="fa-solid fa-clipboard-list"></i> Latest Assessment Summary</h2>
+    <div id="latestReport">Loading...</div>
+
+    <!-- Tips Section -->
+    <div class="tips-box" id="tipsBox">
+      <h3>🌟 Tips to Maintain Happiness & Reduce Sadness</h3>
+      <ul id="tipsList"></ul>
+    </div>
+
+    <div class="section">
+  <h3>🧠 Emotional Summary</h3>
+  <p id="emotionDisplay"></p>
+</div>
+
+    <button class="btn" onclick="printReport()">🖨️ Print / Download Report</button>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 MindEase | Student Mental Health Portal | All Rights Reserved</p>
+  </footer>
+
+  <!-- Chatbot Integration -->
+  <script src="https://cdn.botpress.cloud/webchat/v3.3/inject.js"></script>
+  <script src="https://files.bpcontent.cloud/2025/10/13/05/20251013053713-P1K771RH.js" defer></script>
+  <script>
+    window.botpressWebChat?.init({
+      botName: 'Student Assistant',
+      bubbleBackground: '#0078ff',
+      showConversationsButton: true,
+      showCloseButton: true
+    });
+  </script>
+
+  <script>
+// Print PDF
+function printReport() {
+  document.getElementById("tipsBox").style.display = "block";
+  window.print();
+}
+
+// Load saved emotion details
+const emotionEmoji = localStorage.getItem("emotionEmoji") || "🙂";
+const emotionMessage = localStorage.getItem("emotionMessage") || "Your emotional state is stable.";
+const emotionType = localStorage.getItem("emotionType") || "okay";
+
+document.getElementById("emotionDisplay").innerHTML =
+  `<strong>Emotion Status:</strong> ${emotionEmoji} ${emotionMessage}`;
+
+window.onload = function() {
+  const last = JSON.parse(localStorage.getItem('lastAssessment'));
+  const latestDiv = document.getElementById('latestReport');
+  const tipsList = document.getElementById("tipsList");
+
+  if (last) {
+    latestDiv.innerHTML = `
+      <p><strong>Date:</strong> ${last.date}</p>
+      <p><strong>Score:</strong> ${last.score.toFixed(1)} / 4</p>
+      <p><strong>Result:</strong> ${last.result}</p>
+    `;
+  } else {
+    latestDiv.innerHTML = `<p>No recent assessment found.</p>`;
+  }
+
+  // Dynamic tips based on emotion
+  let tips = [];
+
+  if (emotionType === "happy") {
+    tips = [
+      "Keep practicing gratitude daily.",
+      "Engage in creative activities.",
+      "Maintain your positive habits.",
+      "Help a friend or classmate who needs support.",
+      "Continue tracking your emotions weekly."
+    ];
+  }
+  else if (emotionType === "okay") {
+    tips = [
+      "Try 5 minutes of deep breathing.",
+      "Keep your study area calm & clutter-free.",
+      "Use a planner to reduce mental pressure.",
+      "Avoid multitasking.",
+      "Take short breaks every 40 minutes."
+    ];
+  }
+  else if (emotionType === "stressed") {
+    tips = [
+      "Try the 5-4-3-2-1 grounding technique.",
+      "Talk to someone you trust.",
+      "Reduce screen time for an hour today.",
+      "Challenge negative thoughts on paper.",
+      "Try a 10-minute guided meditation."
+    ];
+  }
+  else if (emotionType === "distress") {
+    tips = [
+      "Reach out to a counselor immediately.",
+      "Avoid isolating yourself.",
+      "Express your feelings in a journal.",
+      "Practice slow breathing every hour.",
+      "Contact a helpline if emotions worsen."
+    ];
+  }
+
+  tipsList.innerHTML = tips.map(t => `<li>${t}</li>`).join("");
+};
+</script>
+
+</body>
+</html>

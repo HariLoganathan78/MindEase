@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MindEase | Contact Us</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: linear-gradient(to right, #f0f7ff, #ffffff);
+      color: #333;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: #0078ff;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+    }
+    .logo {
+      font-size: 22px;
+      font-weight: 700;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links li {
+      margin-left: 20px;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+    }
+    .nav-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      background: linear-gradient(rgba(0,120,255,0.4), rgba(0,120,255,0.5)), 
+        url('https://images.unsplash.com/photo-1554774853-aae0a22c8aa4?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+      color: white;
+      padding: 70px 20px;
+    }
+    .header h1 {
+      font-size: 42px;
+      margin-bottom: 10px;
+    }
+
+    /* Contact Container */
+    .contact-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      max-width: 1100px;
+      margin: 50px auto;
+      padding: 20px;
+    }
+
+    /* Form Section */
+    .contact-form {
+      background: white;
+      flex: 1;
+      min-width: 320px;
+      border-radius: 14px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      padding: 30px;
+    }
+    .contact-form h2 {
+      color: #0078ff;
+      margin-bottom: 20px;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-family: 'Poppins', sans-serif;
+    }
+    .contact-form button {
+      background: #0078ff;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .contact-form button:hover {
+      background: #005fcc;
+    }
+
+    /* Info Section */
+    .contact-info {
+      flex: 1;
+      min-width: 320px;
+      background: #0078ff;
+      color: white;
+      border-radius: 14px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      padding: 30px;
+    }
+    .contact-info h2 {
+      margin-bottom: 20px;
+    }
+    .info-item {
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
+    .info-item i {
+      margin-right: 10px;
+      color: #fff;
+    }
+
+    /* Map */
+    .map {
+      text-align: center;
+      margin-top: 50px;
+    }
+    iframe {
+      width: 90%;
+      height: 350px;
+      border: none;
+      border-radius: 12px;
+    }
+
+    footer {
+      background: #003c80;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+      margin-top: 50px;
+    }
+
+    @media (max-width: 768px) {
+      .contact-container {
+        flex-direction: column;
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">MindEase</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="selfhelp.html">Self-Help</a></li>
+      <li><a href="assessment.html">Assessment</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="report.html">Report</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="emotiondetect.html">Emotion Detection</a></li>
+    </ul>
+  </nav>
+
+  <!-- Header -->
+  <section class="header">
+    <h1>Contact Us</h1>
+    <p>We’re here to support you. Reach out anytime for guidance or feedback.</p>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact-container">
+
+    <!-- Form -->
+    <div class="contact-form">
+      <h2><i class="fa-solid fa-envelope"></i> Send us a message</h2>
+      <input type="text" id="name" placeholder="Your Name" required>
+      <input type="email" id="email" placeholder="Your Email" required>
+      <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+      <button onclick="submitForm()">Send Message</button>
+      <p id="statusMsg" style="margin-top:10px; color:green; font-weight:500;"></p>
+    </div>
+
+    <!-- Info -->
+    <div class="contact-info">
+      <h2><i class="fa-solid fa-headset"></i> Get in Touch</h2>
+      <div class="info-item"><i class="fa-solid fa-location-dot"></i> MindEase HQ, Coimbatore, Tamil Nadu</div>
+      <div class="info-item"><i class="fa-solid fa-phone"></i> +91 98765 43210</div>
+      <div class="info-item"><i class="fa-solid fa-envelope"></i> support@mindease.org</div>
+      <div class="info-item"><i class="fa-solid fa-clock"></i> Mon – Fri: 9:00 AM – 6:00 PM</div>
+      <hr style="border-color: rgba(255,255,255,0.4); margin: 20px 0;">
+      <p>Need urgent help? Call the <strong>National Helpline: 9152987821</strong></p>
+    </div>
+
+  </section>
+
+  <!-- Map -->
+  <div class="map">
+    <iframe src="https://maps.google.com/maps?q=coimbatore&t=&z=12&ie=UTF8&iwloc=&output=embed"></iframe>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 MindEase | Student Mental Health Portal | All Rights Reserved</p>
+  </footer>
+
+  <!-- Chatbot Integration -->
+  <script src="https://cdn.botpress.cloud/webchat/v3.3/inject.js"></script>
+  <script src="https://files.bpcontent.cloud/2025/10/13/05/20251013053713-P1K771RH.js" defer></script>
+  <script>
+    window.botpressWebChat?.init({
+      botName: 'Student Assistant',
+      bubbleBackground: '#0078ff',
+      showConversationsButton: true,
+      showCloseButton: true
+    });
+  </script>
+
+  <!-- Inline JS -->
+  <script>
+    function submitForm() {
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const message = document.getElementById("message").value.trim();
+      const status = document.getElementById("statusMsg");
+
+      if (name === "" || email === "" || message === "") {
+        status.style.color = "red";
+        status.innerText = "⚠️ Please fill all fields.";
+        return;
+      }
+
+      // Save to localStorage (simulated backend)
+      const feedbacks = JSON.parse(localStorage.getItem("feedbacks") || "[]");
+      feedbacks.push({ name, email, message, date: new Date().toLocaleString() });
+      localStorage.setItem("feedbacks", JSON.stringify(feedbacks));
+
+      // Show success message
+      status.style.color = "green";
+      status.innerText = "✅ Message sent successfully!";
+      
+      // Clear fields
+      document.getElementById("name").value = "";
+      document.getElementById("email").value = "";
+      document.getElementById("message").value = "";
+    }
+  </script>
+</body>
+</html>

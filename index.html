@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MindEase | Student Mental Health Portal</title>
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    /* ===== General Styles ===== */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: #f4f8fb;
+      color: #333;
+    }
+
+    /* ===== Navbar ===== */
+    .navbar {
+      background: #0078ff;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo {
+      font-size: 22px;
+      font-weight: 700;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links li {
+      margin-left: 20px;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+    }
+    .nav-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* ===== Hero Section ===== */
+    .hero {
+      height: 80vh;
+      background: linear-gradient(rgba(0, 120, 255, 0.4), rgba(0, 120, 255, 0.6)), 
+        url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    .hero-content h1 {
+      font-size: 48px;
+      margin-bottom: 15px;
+    }
+    .hero-content p {
+      font-size: 18px;
+      max-width: 700px;
+      margin: 0 auto 25px;
+    }
+    .hero-buttons a {
+      margin: 8px;
+      padding: 12px 25px;
+      border-radius: 6px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.3s;
+      display: inline-block;
+    }
+    .btn-primary {
+      background: #fff;
+      color: #0078ff;
+    }
+    .btn-primary:hover {
+      background: #0078ff;
+      color: #fff;
+      border: 1px solid #fff;
+    }
+    .btn-secondary {
+      background: transparent;
+      color: #fff;
+      border: 1px solid #fff;
+    }
+    .btn-secondary:hover {
+      background: #fff;
+      color: #0078ff;
+    }
+
+    /* ===== About Section ===== */
+    .about {
+      padding: 60px 30px;
+      text-align: center;
+    }
+    .about h2 {
+      color: #0078ff;
+      font-size: 30px;
+    }
+    .about p {
+      max-width: 800px;
+      margin: 10px auto 30px;
+    }
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+    }
+    .feature {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      padding: 25px;
+      width: 280px;
+      transition: 0.3s;
+    }
+    .feature:hover {
+      transform: translateY(-8px);
+    }
+    .feature i {
+      font-size: 35px;
+      color: #0078ff;
+      margin-bottom: 10px;
+    }
+
+    /* ===== Motivation Section ===== */
+    .quotes {
+      background: #0078ff;
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .quotes blockquote {
+      font-size: 22px;
+      font-style: italic;
+      margin: 20px auto;
+      max-width: 700px;
+    }
+    .quotes button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      background: #fff;
+      color: #0078ff;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    .quotes button:hover {
+      background: #003c80;
+      color: #fff;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      background: #003c80;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 34px;
+      }
+      .features {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 🌐 Navbar -->
+  <nav class="navbar">
+    <div class="logo">MindEase</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="selfhelp.html">Self-Help</a></li>
+      <li><a href="assessment.html">Assessment</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="report.html">Report</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="emotiondetect.html">Emotion Detection</a></li>
+    </ul>
+  </nav>
+
+  <!-- 💫 Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Your Mental Health Matters</h1>
+      <p>MindEase helps students find peace, balance, and guidance through curated mental health resources, self-assessments, and support tools.</p>
+      <div class="hero-buttons">
+        <a href="assessment.html" class="btn-primary">Take Assessment</a>
+        <a href="resources.html" class="btn-secondary">Explore Resources</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 💬 About Section -->
+  <section class="about">
+    <h2>About MindEase</h2>
+    <p>MindEase is a student-focused mental health portal designed to make emotional well-being accessible, reliable, and stigma-free. Our platform empowers you with tools to manage stress, anxiety, and self-growth.</p>
+
+    <div class="features">
+      <div class="feature">
+        <i class="fa-solid fa-heart-pulse"></i>
+        <h3>Self-Help Tools</h3>
+        <p>Practice mindfulness, journaling, and relaxation activities that promote balance and positivity.</p>
+      </div>
+      <div class="feature">
+        <i class="fa-solid fa-chart-line"></i>
+        <h3>Progress Dashboard</h3>
+        <p>Track your emotional well-being, self-assessments, and personal growth over time.</p>
+      </div>
+      <div class="feature">
+        <i class="fa-solid fa-user-md"></i>
+        <h3>Professional Guidance</h3>
+        <p>Connect with mental health professionals and access verified helplines anytime.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🌟 Motivation Section -->
+  <section class="quotes">
+    <h2>Daily Motivation</h2>
+    <blockquote id="quote">"Every day may not be good, but there is something good in every day."</blockquote>
+    <button onclick="newQuote()">Inspire Me</button>
+  </section>
+
+  <!-- 📞 Footer -->
+  <footer>
+    <p>© 2025 MindEase | Student Mental Health Portal | All Rights Reserved</p>
+  </footer>
+
+  <!-- 🤖 Chatbot Integration -->
+  <script src="https://cdn.botpress.cloud/webchat/v3.3/inject.js"></script>
+  <script src="https://files.bpcontent.cloud/2025/10/13/05/20251013053713-P1K771RH.js" defer></script>
+  <script>
+    // Initialize your chatbot
+    window.botpressWebChat?.init({
+      botName: 'Student Assistant',
+      bubbleBackground: '#0078ff',
+      showConversationsButton: true,
+      showCloseButton: true
+    });
+
+    // Motivational Quotes JS
+    const quotes = [
+      '"Your mental health is a priority, not a luxury."',
+      '"Breathe. You’re stronger than you think."',
+      '"Small steps every day lead to big changes."',
+      '"You don’t have to control your thoughts. You just have to stop letting them control you."',
+      '"Healing takes time, and that’s okay."',
+      '"Progress, not perfection."',
+      '"Rest is productive too."',
+      '"You deserve peace and happiness."'
+    ];
+    function newQuote() {
+      const random = Math.floor(Math.random() * quotes.length);
+      document.getElementById("quote").innerText = quotes[random];
+    }
+  </script>
+</body>
+</html>
